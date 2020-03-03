@@ -31,6 +31,10 @@ public class GetQuestInputs : MonoBehaviour
     }
 
     void FixedUpdate(){
+
+      #if UNITY_EDITOR
+
+      #else
       OVRInput.FixedUpdate();
 
       // returns a float of the secondary (typically the Right) index finger trigger’s current state.
@@ -40,6 +44,7 @@ public class GetQuestInputs : MonoBehaviour
 
       leftVal.text = " left : " + leftValue;
       rightVal.text = " right : " + rightValue;
+      #endif
 
     }
 }
