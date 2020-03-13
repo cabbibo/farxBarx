@@ -19,7 +19,14 @@
             #include "UnityCG.cginc"
 
 
-            #include "../Chunks/Struct16.cginc"
+              struct Vert{
+      float3 pos;
+      float3 vel;
+      float3 nor;
+      float3 tan;
+      float2 uv;
+      float2 debug;
+    };
 
 
             struct v2f { float4 pos : SV_POSITION; float3 nor : NORMAL; };

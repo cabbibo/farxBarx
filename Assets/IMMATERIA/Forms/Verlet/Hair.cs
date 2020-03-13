@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 
 namespace IMMATERIA {
-public class Hair: Form {
+public class Hair: Particles {
 
   public Form baseForm;
   public int numVertsPerHair;

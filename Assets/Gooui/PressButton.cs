@@ -82,9 +82,9 @@ public class PressButton : MonoBehaviour {
   // Use this for initialization
   void Awake () {
 
-    ValueY = 0;
-    ValueX = 0;
-    ValueXY = new Vector2( 0 , 0);
+    //ValueY = 0;
+    //ValueX = 0;
+    //ValueXY = new Vector2( 0 , 0);
 
     CreateMesh();
 

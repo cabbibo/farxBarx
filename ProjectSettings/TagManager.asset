@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Hand
+  - Target
+  - Shark
   layers:
   - Default
   - TransparentFX

@@ -120,6 +120,8 @@ float3 force = 0;
     p.pos += p.vel;// * _DT * 60;
 
 
+
+
     ///p.vel *= _Dampening;
 
     p.vel *= .19;
@@ -135,6 +137,8 @@ float3 force = 0;
 
     //p.debug = length(inLine);
     //p.pos = targetPos;
+
+    p.pos = base;
 
     p.nor = 1;
 
@@ -182,6 +186,7 @@ void TriLocation (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID) {
   if( pID < _ParticleBuffer_COUNT ){
 
     int sID = safeID( pID, _ParticleBuffer_COUNT );
+    int vID = safeID( pID, _VertBuffer_COUNT );
     Particle p  = _ParticleBuffer[sID];
     Vert v      = _VertBuffer[sID];
 

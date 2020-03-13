@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Oculus/VR/Scenes/Cubes.unity
     guid: d920b3d2525670f4abad3d20eda3b349
-  - enabled: 1
+  - enabled: 0
     path: Assets/Oculus/VR/Scenes/ControllerModels.unity
     guid: 39cfe7aa0a2d46c47994d8d0308ec663
   - enabled: 0
@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Oculus/VR/Scenes/HandTest.unity
     guid: b9a31e08066d6e343a208d34ec298f09
+  - enabled: 0
+    path: Assets/blarp1.unity
+    guid: 3bf7ccad1673748f6818e3572dccd216
+  - enabled: 0
+    path: Assets/ball.unity
+    guid: 3e754e50af6db4cf489a96adc24ffaa8
+  - enabled: 0
+    path: Assets/Scenes/trailBrush.unity
+    guid: ce79dd9fd0c5d4449b5a9da2dad71200
+  - enabled: 1
+    path: Assets/trailBrushGPU.unity
+    guid: fac02d2e61aa34a83bd45d6a6f751ae2
   m_configObjects: {}

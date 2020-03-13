@@ -107,7 +107,7 @@ float3 getVel( float3 p1 , float3 p2 ){
 
   float3 v = p1 - p2;
 
-  if( length( v ) > .2){ v = normalize( v ) *.2; }
+  if( length( v ) > 1.2){ v = normalize( v ) *1.2; }
   return v;
   
 }
@@ -159,12 +159,12 @@ void Set (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uint3 id 
 
 
        
-    //vert.pos = base.pos - base.nor * l * vert.debug.x;
+    vert.pos = base.pos - base.nor * l * vert.debug.x;
     //vert.oPos = vert.pos;
 
 
         
-    vert.debug.x = l* (.8+hash( float(bID)) * .1 * _HairLength);//((sin(float(bID)*10000)+ _HairVariance) / _HairVariance ) * _HairLength;
+    vert.debug.x =  (.8+hash( float(bID)) * .1 * _HairLength);//((sin(float(bID)*10000)+ _HairVariance) / _HairVariance ) * _HairLength;
 
     _VertBuffer[pID] = vert;
 
@@ -192,10 +192,10 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
    // if( base.used == 1 ){
 
    
-    float3 force = base.nor * (1-vert.uv.x * vert.uv.x);//float3( 0 , base.nor , 0.0 );
+    float3 force = base.nor * (1-vert.uv.x * vert.uv.x) * .4;//float3( 0 , base.nor , 0.0 );
 
 
-    force += curlNoise( vert.pos ) * .1 ;// * _NoiseForce;
+    force += curlNoise( vert.pos * 1 + float3(0,_Time * .1,0) ) * .05 ;// * _NoiseForce;
 
    
 
@@ -204,12 +204,12 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
     // Inertia: objects in motion stay in motion.
     float3 vel = getVel( vert.pos , vert.oPos);
 
-    if( length( force ) > 2 ){
-      force = normalize(force) * 2;
+    if( length( force ) > 20 ){
+      force = normalize(force) * 20;
     }
 
     if( length( vel ) > 2 ){
-      vel = normalize(vel) * 2;
+      vel = normalize(vel) * 20;
     }
  
 
@@ -261,9 +261,9 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
 
     //vert.nor = normalize(vert.pos - vert.oPos);
 
-    if( _DT  < .1 && tb == false  && _FullScale != 0 ){
+    if( _DT  < .1 && tb == false ){
 
-      float3 next = vert.pos + (vel  * .95 + force * .01);// * _DT * 60;
+      float3 next = vert.pos + (vel  * .98 + force * .001);// * _DT * 60;
 
       vert.oPos = vert.pos;
       vert.pos = next;//mul(_FullLTW,float4(next,1)).xyz;
@@ -272,6 +272,9 @@ void Collision (uint threadID : SV_GroupIndex, uint3 u3GroupID : SV_GroupID, uin
       vert.pos = targetPos;
 
     }
+
+
+    //vert.pos = base.pos - base.nor * 1.2 * vert.uv.x;
 
 
 

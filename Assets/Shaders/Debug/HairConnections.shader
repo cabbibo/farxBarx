@@ -65,8 +65,8 @@
             o.pos = mul (UNITY_MATRIX_VP, float4(pos,1.0f));
             o.debug = 1;
 
-            if( v2.uv.x  < 1/float(_NumVertsPerHair)){
-            o.debug = 0;
+            if( v2.uv.x  == 0){
+              o.debug = 0;
             }
 
         }
